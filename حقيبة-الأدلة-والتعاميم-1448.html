@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حقيبة الأدلة والتعاميم 1448هـ | الثانوية الثالثة بالخبر</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --radius: 1rem;
+      --background: #e8f0f5;
+      --foreground: #1e2d3a;
+      --card: rgba(255, 255, 255, 0.78);
+      --primary: #2b5a7c;
+      --primary-foreground: #ffffff;
+      --secondary: #d6e4ec;
+      --secondary-foreground: #1e2d3a;
+      --muted: #c8d8e2;
+      --muted-foreground: #4a6173;
+      --accent: #3a8a9e;
+      --border: rgba(43, 90, 124, 0.18);
+      --ring: rgba(43, 90, 124, 0.35);
+      --shadow: 0 18px 50px -25px rgba(30, 45, 58, 0.45);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Tajawal", system-ui, sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      background: url("https://i.ibb.co/fGNFkbfW/11.jpg") center / cover no-repeat fixed;
+      z-index: -2;
+    }
+
+    .veil {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(90rem 50rem at 80% -10%, rgba(43, 90, 124, 0.14), transparent 60%),
+        radial-gradient(70rem 40rem at 10% 110%, rgba(58, 138, 158, 0.14), transparent 60%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem;
+    }
+
+    .glass {
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 0.75rem);
+      box-shadow: var(--shadow);
+    }
+
+    header { text-align: center; padding: 2rem 1.5rem; }
+    header img {
+      height: 96px;
+      width: auto;
+      filter: drop-shadow(0 6px 14px rgba(30, 45, 58, 0.25));
+    }
+
+    h1 {
+      margin-top: 1.25rem;
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.5;
+      color: var(--foreground);
+    }
+    h1 span { color: var(--primary); }
+
+    .chips {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--secondary-foreground);
+      background: var(--secondary);
+      border: 1px solid var(--border);
+    }
+
+    .intro {
+      position: relative;
+      margin-top: 1.5rem;
+      padding: 2rem 1.75rem;
+      border-radius: calc(var(--radius) + 0.5rem);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(43, 90, 124, 0.06));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      text-align: center;
+      overflow: hidden;
+    }
+    .intro::before {
+      content: "”";
+      position: absolute;
+      top: 0.2rem;
+      right: 1.1rem;
+      font-family: Georgia, serif;
+      font-size: 4rem;
+      line-height: 1;
+      color: rgba(43, 90, 124, 0.22);
+      pointer-events: none;
+    }
+    .intro p {
+      position: relative;
+      z-index: 1;
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--foreground);
+      letter-spacing: 0.01em;
+    }
+
+    .controls { margin-top: 1.5rem; padding: 1.25rem; }
+    .control-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .control-grid { grid-template-columns: 1fr 1fr; } }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--muted-foreground);
+      margin-bottom: 0.4rem;
+    }
+    .select-wrap, .input-wrap { position: relative; }
+
+    .field, select, input {
+      width: 100%;
+      appearance: none;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--foreground);
+      padding: 0.85rem 2.7rem 0.85rem 1rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .field:focus, select:focus, input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px var(--ring);
+    }
+    .field:disabled, input:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .icon {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.1rem;
+      height: 1.1rem;
+      color: var(--primary);
+      pointer-events: none;
+    }
+    .chevron {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1rem;
+      height: 1rem;
+      color: var(--muted-foreground);
+      pointer-events: none;
+    }
+
+    .cards {
+      margin-top: 1.25rem;
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.95rem 1rem;
+      border-radius: calc(var(--radius) + 0.25rem);
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      color: var(--foreground);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+      box-shadow: 0 16px 32px -20px rgba(30, 45, 58, 0.55);
+    }
+    .card.no-link { cursor: default; }
+    .card.no-link:hover { transform: none; border-color: var(--border); box-shadow: none; }
+
+    .num {
+      display: grid;
+      place-items: center;
+      width: 2.1rem;
+      height: 2.1rem;
+      flex-shrink: 0;
+      border-radius: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary-foreground);
+      background: linear-gradient(140deg, var(--primary), var(--accent));
+    }
+    .title { flex: 1; font-weight: 600; line-height: 1.6; }
+    .external {
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+      color: var(--primary);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .card:hover .external { opacity: 1; }
+    .badge {
+      flex-shrink: 0;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted-foreground);
+      background: var(--secondary);
+    }
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.6);
+      color: var(--muted-foreground);
+    }
+
+    footer { margin-top: 2.5rem; text-align: center; font-size: 0.8rem; color: var(--muted-foreground); }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="veil"></div>
+
+  <div class="container">
+    <header class="glass">
+      <img src="https://i.ibb.co/9HGdPHNw/image.png" alt="شعار وزارة التعليم" />
+      <h1>حقيبة الأدلة والتعاميم <span>للعام الدراسي 1448هـ</span></h1>
+      <div class="chips">
+        <span class="chip">الثانوية الثالثة بالخبر</span>
+        <span class="chip">مديرة المدرسة: منى بنت موسى الزهراني</span>
+      </div>
+    </header>
+
+    <section class="intro">
+      <p>
+        الأدلة واللوائح والتعاميم هي الإطار التنظيمي المتكامل الذي يحكم البيئة المدرسية؛ حيث ترسم الأدلة خطوات العمل التنفيذية، وتحدد اللوائح الحقوق والمسؤوليات، بينما تُجدد التعاميم التوجيهات والمستجدات الإدارية، مما يضمن توحيد الأداء وتحقيق الانضباط والجودة التعليمية.
+      </p>
+    </section>
+
+    <section class="controls glass">
+      <div class="control-grid">
+        <div>
+          <label for="category">نوع البحث</label>
+          <div class="select-wrap">
+            <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <select id="category">
+              <option value="">اختر التصنيف…</option>
+              <option value="guides">الأدلة</option>
+              <option value="circulars">التعاميم واللوائح</option>
+            </select>
+            <svg class="chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div>
+          <label for="query" id="query-label">البحث</label>
+          <div class="input-wrap">
+            <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="query" placeholder="اختر التصنيف أولاً" disabled />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="cards"></section>
+
+    <footer>
+      إعداد وتنسيق: رانية أحمد المعيلي / مساعد الشؤون الطلابية بالمدرسة — العام الدراسي 1448/2026
+    </footer>
+  </div>
+
+  <script>
+    const guides = [
+      { title: "الدليل الارشادي لإدارة الأداء لشاغلي الوظائف التعليمية", url: "https://drive.google.com/file/d/1jFWqbSMInv83KMxiXNRBUY4qH8LCUCr8/view?usp=drive_link" },
+      { title: "دليل الاستثمار الأمثل لشاغلي الوظائف التعليمية", url: "https://drive.google.com/file/d/1NW2O_RRf0MqQ63v4mHymusNiH-SRBitu/view?usp=drive_link" },
+      { title: "دليل توزيع درجات المقررات الدراسية 2025", url: "https://drive.google.com/file/d/1xo5uLncUA4o7ouGoNQsaofAF5-ea5qel/view?usp=drive_link" },
+      { title: "دليل الاختبارات 2025", url: "https://drive.google.com/file/d/1a9CsWSJZ9BfALG2tAmRTo2uUEcUF1WHs/view?usp=drive_link" },
+      { title: "الدليل الاجرائي", url: "https://drive.google.com/file/d/1B2FsI0linPuQeb_Awn08l6-s41s3ZqB4/view?usp=drive_link" },
+      { title: "دليل المجال الاختياري", url: "https://drive.google.com/file/d/1rYVyZMiPICbP-RC4IB9L2FEUqaB63ZCD/view?usp=drive_link" },
+      { title: "دليل الخطط الدراسية", url: "https://drive.google.com/file/d/1vXbcdw3K5ytD5sUWJH5FlHH5cNOueeaI/view?usp=drive_link" },
+      { title: "الدليل التنظيمي", url: "https://drive.google.com/file/d/1qYftWMB67cC_YXQiSHoK8aaNPt2VLo8E/view?usp=drive_link" },
+      { title: "الدليل الاجرائي للتقويم الذاتي", url: "https://drive.google.com/file/d/1oOAGEPXeEktturCSKkqHMSsOt0DAC4qz/view?usp=drive_link" },
+      { title: "دليل المستخدم لنظام حضوري", url: "https://drive.google.com/file/d/1OsUevYcU0nEBUMk7kYlu8l1WRAkFeiIR/view?usp=drive_link" },
+      { title: "دليل استخدام نظام نور و نظام فارس", url: "https://drive.google.com/file/d/1GGGGC1ZljVyHkjSbjl9C1IRNch_wDSuh/view?usp=drive_link" },
+      { title: "أدلة المعلمات للمرحلة الثانوية", url: "https://drive.google.com/file/d/1M3xYZXuBV_-V_SHzFqFYT29nve_QyHJY/view?usp=drive_link" },
+    ];
+
+    const circulars = [
+      { title: "اسناد المقررات الجديدة في نظام المسارات", url: "https://drive.google.com/file/d/1mYZXkob49s7OMZmzCikRB5NsOXsVHCjU/view?usp=drive_link" },
+      { title: "خطة المدرسة و مشاركتها مع الأسرة", url: "https://drive.google.com/file/d/13_P5lHlzhFhfwaCzdDKIpgBEqWG_NKBp/view?usp=drive_link" },
+      { title: "أنظمة و إجراءات الاختبارات", url: "https://drive.google.com/file/d/1RGMPeFmPa2skVNNmp_7nCVhPWnsD3I4K/view?usp=drive_link" },
+      { title: "الكتب الدراسية", url: "https://drive.google.com/file/d/1KBu4rzdDoQRlPDJer6VDy9OJNtMlceT-/view?usp=drive_link" },
+      { title: "لائحة الاجازات", url: "https://drive.google.com/file/d/116vaBCZlYN1KNU5GzI5KAP0MYGwoX6__/view?usp=drive_link" },
+      { title: "توزيع المقررات", url: "https://drive.google.com/file/d/1xL4530WOI1lGLvYxUz4Zq9CGXY10X96o/view?usp=drive_link" },
+      { title: "منصة مدرستي", url: "https://schools.madrasati.sa/" },
+      { title: "وثيقة سياسة التعليم في المملكة", url: "https://drive.google.com/file/d/1h9x7IApUJfcBjybgp_oeGUIWqulr9TlU/view?usp=drive_link" },
+      { title: "شروحات مدرستي مجزئة حسب مهمة المعلمة", url: "https://drive.google.com/file/d/1uHw5SPQHwI5WtpbVIBcBiQ-90PFvdLBf/view?usp=drive_link" },
+      { title: "التحضير الالكتروني النموذجي في منصة مدرستي", url: "https://drive.google.com/file/d/16kpiCMoLZtmMo-iDmFwbh6M1iSdsfrm9/view?usp=drive_link" },
+      { title: "مدونة قواعد السلوك الوظيفي و أخلاقيات الوظيفة العامة", url: "https://drive.google.com/file/d/1q1VBnI-fR5ZvKcPF2yqme4vxlvDVwRTk/view?usp=drive_link" },
+      { title: "تعميم منع العقاب السلبي بجميع أنواعه", url: "https://drive.google.com/file/d/10C_QF7JmG5OK__wkiviJ0X7b-2rcHoxQ/view?usp=drive_link" },
+      { title: "تعميم عدم جمع المبالغ المالية من الطلبة", url: "https://drive.google.com/file/d/1GY4_aHZ1k5CkfE0n0PKrJni3Kz6FhtPz/view?usp=drive_link" },
+      { title: "تعميم بشأن إعداد الدروس الكترونياً عبر منصة مدرستي", url: "https://drive.google.com/file/d/1-XH__swkyZMDP6QaDwa-qloR1uGwdk7c/view?usp=drive_link" },
+      { title: "وثيقة تعزيز النزاهة و الإفصاح عن تعارض المصالح", url: "https://drive.google.com/file/d/1zGNf2CaXS2YWgQe2hGCmy3W5muimgPYB/view?usp=drive_link" },
+      { title: "إدارة الأداء الوظيفي", url: "https://drive.google.com/file/d/1FPnjrf2Fwxm906b-kURmq_kb3gvQesdW/view?usp=drive_link" },
+      { title: "اللائحة التنفيذية لنظام الانضباط الوظيفي", url: "https://drive.google.com/file/d/1KX_padmqw3ICFKRJtI5kQbMRZ9-yXmpd/view?usp=drive_link" },
+      { title: "نظام الانضباط الوظيفي", url: "https://drive.google.com/file/d/1u12JB2fMiJ6lvHBE7Mi-rSVsBYBvyCe4/view?usp=drive_link" },
+      { title: "محددات تطبيق أدوات التعليم الالكتروني", url: "https://drive.google.com/file/d/1dTbENEFJ91ugls-0QdzHWPhDGve9BNdR/view?usp=drive_link" },
+      { title: "التقويم الدراسي" },
+      { title: "منع الجوالات في الفصول", url: "https://drive.google.com/file/d/1GY4_aHZ1k5CkfE0n0PKrJni3Kz6FhtPz/view?usp=drive_link" },
+      { title: "قواعد السلوك و المواظبة", url: "https://drive.google.com/file/d/1hva1z15qHXMghVpYwN3UG9UaZjKyIl0h/view?usp=drive_link" },
+      { title: "لائحة تقويم الطالب 2025", url: "https://drive.google.com/file/d/1q9N33ZKAZZSpsDEs5x1hu0whsIydywif/view?usp=drive_link" },
+      { title: "الاجراءات التنفيذية للائحة تقويم الطالب 2025", url: "https://drive.google.com/file/d/13k-6A1VmA6trVYVMNsYuEb7s_K7DTXuY/view?usp=drive_link" },
+      { title: "الجدارات 2025", url: "https://drive.google.com/file/d/1UVuecbX6mAwvPQvDCDT81wYiieJA8PBM/view?usp=drive_link" },
+    ];
+
+    const categoryEl = document.getElementById("category");
+    const queryEl = document.getElementById("query");
+    const queryLabel = document.getElementById("query-label");
+    const resultsEl = document.getElementById("results");
+
+    function render() {
+      const category = categoryEl.value;
+      const query = queryEl.value.trim();
+      resultsEl.innerHTML = "";
+
+      if (!category) {
+        queryEl.disabled = true;
+        queryEl.value = "";
+        queryEl.placeholder = "اختر التصنيف أولاً";
+        queryLabel.textContent = "البحث";
+        return;
+      }
+
+      queryEl.disabled = false;
+      queryEl.placeholder = "ابحث بالاسم…";
+
+      const items = category === "guides" ? guides : circulars;
+      queryLabel.textContent = category === "guides" ? "الأدلة" : "التعاميم واللوائح";
+
+      const filtered = query ? items.filter((i) => i.title.includes(query)) : items;
+
+      if (filtered.length === 0) {
+        resultsEl.innerHTML = '<p class="empty">لا توجد نتائج مطابقة</p>';
+        return;
+      }
+
+      filtered.forEach((item, idx) => {
+        if (item.url) {
+          const a = document.createElement("a");
+          a.className = "card";
+          a.href = item.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.innerHTML = `
+            <span class="num">${idx + 1}</span>
+            <span class="title">${item.title}</span>
+            <svg class="external" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          `;
+          resultsEl.appendChild(a);
+        } else {
+          const div = document.createElement("div");
+          div.className = "card no-link";
+          div.innerHTML = `
+            <span class="num">${idx + 1}</span>
+            <span class="title">${item.title}</span>
+            <span class="badge">المرفق قريباً</span>
+          `;
+          resultsEl.appendChild(div);
+        }
+      });
+    }
+
+    categoryEl.addEventListener("change", () => { queryEl.value = ""; render(); });
+    queryEl.addEventListener("input", render);
+    render();
+  </script>
+</body>
+</html>
